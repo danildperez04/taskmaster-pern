@@ -40,3 +40,11 @@ export class UnauthorizedException extends HttpException{
     this.name = 'UnauthorizedException';
   }
 }
+
+export class InternalServerErrorException extends HttpException{
+  constructor(message = 'Internal Server Error'){
+    super(message, HttpStatus.INTERNAL_SERVER_ERROR);
+
+    this.name = 'InternalServerErrorException';
+  }
+}

@@ -14,18 +14,20 @@ export const errorHandler = (err: Error, _req: Request, res: Response, next: Nex
     });
 
     res.json({error: message});
-    return;
   }
 
   if(err instanceof HttpException){
-
-    res.json({error: err.message, success: false});
-    return;
+    if(err.status <= 500){
+      res.status(err.status).json({error: err.message, success: false});
+      return;
+    }
+    
+    res.status(err.status).json({error: 'Something went wrong', success: false});  
   }
 
   if(err instanceof QueryFailedError){
-    res.status(500).json({error: 'Ha ocurrido un error inesperado'});
+    res.status(500).json({error: 'An unexpected error ocurred'});
   }
 
-  next(err);
+  next();
 };

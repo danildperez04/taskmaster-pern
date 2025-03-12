@@ -1,4 +1,4 @@
-import { IsDate, IsEmail, IsOptional, IsString, IsStrongPassword, Length} from "class-validator";
+import { IsDate, IsEmail, IsNumber, IsOptional, IsString, IsStrongPassword, Length} from "class-validator";
 
 export class CreateUserDTO {
   @IsString()
@@ -24,6 +24,7 @@ export class CreateUserDTO {
 }
 
 export class UpdateUserDTO{
+  @IsNumber()
   id: number;
   
   @IsOptional()
@@ -51,5 +52,5 @@ export class UpdateUserDTO{
 
   @IsOptional()
   @IsDate()
-  birthDate?: string;
+  birthDate?: Date;
 }

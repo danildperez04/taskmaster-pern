@@ -17,7 +17,9 @@ export class UserService {
   }
 
   async findAll({limit, skip}: QueryData){
-    return this.userRepository.find({take: limit, skip});
+    const users = await this.userRepository.find({take: limit, skip});
+
+    return users.map(({hashedPassword, ...user}) => user);
   }
 
   async findOne({id}: {id: number}){
@@ -27,7 +29,9 @@ export class UserService {
       throw new NotFoundException('User not found');
     }
 
-    return user;
+    const {hashedPassword, ...newUser} = user;
+
+    return newUser;
   }
 
   async create(userToCreate: CreateUserDTO) {
@@ -45,11 +49,26 @@ export class UserService {
 
     Object.assign(user, userToUpdate);
     const updatedUser = await this.userRepository.save(user);
+  
+    const {hashedPassword, ...newUser} = updatedUser;
 
-    return updatedUser;
+    return newUser;
   }
 
-  async remove(userToDelete: User){
+  async remove(id: number){
+    const user = await this.userRepository.findOne({where: {id}});
+
+    if(!user){
+      throw new NotFoundException('User not found');
+    }
+
+    user.isActive = false;
+
+    await this.userRepository.save(user);
+  }
+
+  async destroy(userToDelete: User){
+
     this.userRepository.delete(userToDelete.id);
   }
 

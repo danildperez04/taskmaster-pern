@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/users.service.ts';
 import { Inject, Service } from 'typedi';
+import { HttpStatus } from '../utils/httpStatusCode.ts';
 
 @Service()
 export class UserController {
@@ -44,21 +45,41 @@ export class UserController {
   async create(req: Request, res: Response) {
     const {firstName, lastName, username, email, password, birthDate} = req.body;
 
-    const userCreated =  await this.userService.create({firstName, lastName, username, email, password,birthDate: new Date(birthDate)});
+    const user =  await this.userService.create({firstName, lastName, username, email, password,birthDate: new Date(birthDate)});
     
-    res.status(201).json({
+    res.status(HttpStatus.CREATED).json({
       message: 'User Created Successfully',
-      data: userCreated
+      data: user
     });
   }
 
   /** PUT `/users/:id` Update the user with the specified id*/
-  async update(_req: Request, _res: Response) {
-    
+  async update(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    const {firstName, lastName, username, email, password, birthDate} = req.body;
+
+    const updatedUser = await this.userService.update({
+      id,
+      firstName, 
+      lastName, 
+      username, 
+      email, 
+      password, 
+      birthDate: birthDate ? new Date(birthDate) : birthDate
+    });
+
+    res.json({
+      message: 'User Modified Succesfully',
+      data: updatedUser
+    });
   }
 
   /** DELETE `/users/:id` Remove the user with the specified id*/
-  async remove(_req: Request, _res: Response) {
-    
+  async remove(req: Request, res: Response) {
+    const id = Number(req.params.id);
+
+    await this.userService.remove(id);
+
+    res.sendStatus(HttpStatus.NO_CONTENT);
   }
 }

@@ -11,17 +11,15 @@ app.use(express.json());
 
 // Routing
 app.get('/', (_req: Request, res: Response) => {
-  res.send('<h1>Hola mundo</h1>');
+  res.send('<h1>Server running...</h1>');
 });
 
 app.use(router);
 
 // Not Found Path
-
 app.use('*', notFound);
 
 // Errors
-
 app.use(errorHandler);
 
 export default app;

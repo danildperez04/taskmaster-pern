@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from "typeorm";
-import { Content } from "./content.entity.ts";
-import { User } from "./user.entity.ts";
+import { Content } from "./content.entity";
+import { User } from "./user.entity";
 
 export enum TaskStatus{
   Pending = 'Pending',

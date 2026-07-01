@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { UserService } from '../services/users.service.ts';
+import { UserService } from '../services/users.service';
 import { Inject, Service } from 'typedi';
-import { HttpStatus } from '../utils/httpStatusCode.ts';
+import { HttpStatus } from '../utils/httpStatusCode';
 
 @Service()
 export class UserController {

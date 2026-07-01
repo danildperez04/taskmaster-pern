@@ -1,5 +1,5 @@
-import { TaskStatus } from "../../models/task.entity.ts";
-import { User } from "../../models/user.entity.ts";
+import { TaskStatus } from "../../models/task.entity";
+import { User } from "../../models/user.entity";
 
 export class CreateTaskDTO{
   title: string;

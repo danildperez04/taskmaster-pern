@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { UserController } from "../controllers/users.controller.ts";
+import { UserController } from "../controllers/users.controller";
 import {Container} from "typedi";
-import { UserService } from "../services/users.service.ts";
-import { validatorHandler } from "../middlewares/validatorHandler.ts";
-import { CreateUserDTO, UpdateUserDTO } from "../services/dto/users.dto.ts";
+import { UserService } from "../services/users.service";
+import { validatorHandler } from "../middlewares/validatorHandler";
+import { CreateUserDTO, UpdateUserDTO } from "../services/dto/users.dto";
 // import { validatorHandler } from "../middlewares/validatorHandler.ts";
 
 const router = Router();

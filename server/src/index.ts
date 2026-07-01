@@ -1,7 +1,7 @@
 import http from "http";
-import app from "./server.ts";
+import app from "./server";
 
-import { dataSource as db } from "./config/database.ts";
+import { dataSource as db } from "./config";
 
 const server = http.createServer(app);
 

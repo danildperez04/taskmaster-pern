@@ -1,4 +1,4 @@
-import { HttpStatus } from "./httpStatusCode.ts";
+import { HttpStatus } from "./httpStatusCode";
 
 export class HttpException extends Error {
   constructor(message = 'Http Exception', public status: HttpStatus){

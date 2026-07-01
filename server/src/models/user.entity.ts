@@ -6,9 +6,9 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { Task } from './task.entity.ts';
-import { Habit } from './habit.entity.ts';
-import { Note } from './note.entity.ts';
+import { Task } from './task.entity';
+import { Habit } from './habit.entity';
+import { Note } from './note.entity';
 
 @Entity()
 export class User {

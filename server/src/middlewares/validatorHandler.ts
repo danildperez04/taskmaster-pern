@@ -1,7 +1,7 @@
 import { validate } from "class-validator";
 import { NextFunction, Request, Response } from "express";
-import { CreateUserDTO, UpdateUserDTO } from "../services/dto/users.dto.ts";
-import { InternalServerErrorException } from "../utils/exceptions.ts";
+import { CreateUserDTO, UpdateUserDTO } from "../services/dto/users.dto";
+import { InternalServerErrorException } from "../utils/exceptions";
 
 
 // Validate a class using class-validator

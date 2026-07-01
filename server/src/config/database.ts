@@ -1,13 +1,13 @@
-import { DataSource } from 'typeorm';
-import { config } from './config.ts';
-import { DataSourceOptions } from 'typeorm/browser';
+import { DataSource, DataSourceOptions } from 'typeorm';
+import { config } from './config';
+
 import path from 'path';
 
 const {
   db: { type, database, port, host, username, password },
 } = config;
 
-const baseDir = path.resolve(import.meta.dirname, '../');
+const baseDir = path.resolve(__dirname, '../');
 
 export const dataSource = new DataSource({
   type,

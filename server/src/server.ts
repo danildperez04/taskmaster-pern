@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import express, { Request, Response } from "express";
 import 'express-async-errors';
-import router from "./routes/index.ts";
-import { notFound } from "./middlewares/notFound.ts";
-import { errorHandler } from "./middlewares/errorHandler.ts";
+import router from "./routes/index";
+import { notFound } from "./middlewares/notFound";
+import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpException } from "../utils/exceptions.ts";
+import { HttpException } from "../utils/exceptions";
 import chalk from "chalk";
 import { ValidationError } from "class-validator";
 import { QueryFailedError } from "typeorm";

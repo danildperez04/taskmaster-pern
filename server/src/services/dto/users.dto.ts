@@ -54,3 +54,11 @@ export class UpdateUserDTO{
   @IsDate()
   birthDate?: Date;
 }
+
+export class UserCredentials{
+  @IsEmail()
+  email: string;
+
+  @IsStrongPassword()
+  password: string;
+}

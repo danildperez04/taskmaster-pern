@@ -1,11 +1,11 @@
 import bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { Service } from 'typedi';
-import { User } from '../models/user.entity.ts';
-import { CreateUserDTO, UpdateUserDTO } from './dto/users.dto.ts';
-import { NotFoundException } from '../utils/exceptions.ts';
-import { QueryData } from '../utils/http.ts';
-import { dataSource } from '../config/database.ts';
+import { User } from '../models/user.entity';
+import { CreateUserDTO, UpdateUserDTO } from './dto/users.dto';
+import { NotFoundException } from '../utils/exceptions';
+import { QueryData } from '../utils/http';
+import { dataSource } from '../config/database';
 
 @Service('user.service')
 export class UserService {
